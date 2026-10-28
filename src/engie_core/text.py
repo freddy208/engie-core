@@ -1,6 +1,7 @@
 import re
 import unicodedata
 
+
 def normalize_text(text: str) -> str:
     """
     Normalize the input text by removing extra spaces and converting it to lowercase.
@@ -14,7 +15,8 @@ def normalize_text(text: str) -> str:
     if not isinstance(text, str):
         raise TypeError("Text must be a string.")
 
-    return "".join(text.lower().split())
+    return " ".join(text.lower().split())
+
 
 def count_words(text: str) -> int:
     """
@@ -29,7 +31,7 @@ def count_words(text: str) -> int:
     return len(text.split())
 
 
-def slugify(text: str) -> str :
+def slugify(text: str) -> str:
     """
     Convert the input text into a slug format (lowercase, hyphen-separated).
 
@@ -42,8 +44,8 @@ def slugify(text: str) -> str :
     if not isinstance(text, str):
         raise TypeError("Text must be a string.")
     text = text.lower()
-    text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('ascii')
-    text = re.sub(r'[^a-z0-9]+', '-', text)
-    text = text.strip('-')
+    text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode("ascii")
+    text = re.sub(r"[^a-z0-9]+", "-", text)
+    text = text.strip("-")
 
     return text
