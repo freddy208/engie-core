@@ -1,4 +1,5 @@
-from engie_core.text import normalize_text, count_words, slugify
+from engie_core.text import count_words, normalize_text, slugify
+
 
 def test_normalize_text():
     assert normalize_text("  Hello World  ") == "hello world"
