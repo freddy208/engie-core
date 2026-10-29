@@ -1,21 +1,61 @@
+import pytest
+
 from engie_core.text import count_words, normalize_text, slugify
 
 
-def test_normalize_text():
-    assert normalize_text("  Hello World  ") == "hello world"
-    assert normalize_text("Python   Programming") == "python programming"
-    assert normalize_text("   Leading and trailing spaces   ") == "leading and trailing spaces"
-    assert normalize_text("Multiple     spaces") == "multiple spaces"
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [
+        ("Hello World", "hello world"),
+        ("Python   Programming", "python programming"),
+        ("  HELLO   World  ", "hello world"),
+        ("", ""),
+        ("   ", ""),
+    ],
+)
+def test_normalize_text(text, expected):
+    assert normalize_text(text) == expected
 
-def test_count_words():
-    assert count_words("Hello World") == 2
-    assert count_words("Python Programming Language") == 3
-    assert count_words("   Leading and trailing spaces   ") == 4
-    assert count_words("Multiple     spaces") == 2
 
-def test_slugify():
-    assert slugify("Hello World") == "hello-world"
-    assert slugify("Python Programming Language") == "python-programming-language"
-    assert slugify("   Leading and trailing spaces   ") == "leading-and-trailing-spaces"
-    assert slugify("Multiple     spaces") == "multiple-spaces"
-    assert slugify("Special Characters!@#$%^&*()") == "special-characters"
+def test_normalize_text_rejects_none():
+    with pytest.raises(TypeError):
+        normalize_text(None)
+
+
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [
+        ("Hello World", 2),
+        ("Hello    wonderful   world", 3),
+        ("", 0),
+        ("   ", 0),
+    ],
+)
+def test_count_words(text, expected):
+    assert count_words(text) == expected
+
+
+def test_count_words_rejects_none():
+    with pytest.raises(TypeError):
+        count_words(None)
+
+
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [
+        ("Hello World", "hello-world"),
+        ("Special Characters!@#$%^&*()", "special-characters"),
+        ("Crème brûlée à Noël", "creme-brulee-a-noel"),
+    ],
+)
+def test_slugify(text, expected):
+    assert slugify(text) == expected
+
+
+@pytest.mark.parametrize(
+    ("text", "exception"),
+    [("", ValueError), (None, TypeError)],
+)
+def test_slugify_rejects_empty_or_none(text, exception):
+    with pytest.raises(exception):
+        slugify(text)
