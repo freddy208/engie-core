@@ -38,6 +38,34 @@ pytest -q
 
 ```
 
+## CLI usage
+
+After installing the package :
+
+```bash
+engie --hlep
+```
+Normlize text :
+
+```bash
+engie normalize " Welcome to Cameroon "
+```
+Count words :
+
+```bash
+engie count " Peace Work Fatherland  "
+```
+
+Create a slug URL :
+
+```bash
+engie slug " students tech 21987"
+```
+
+## Error handling
+
+The CLI validates user input and returns clean error messages when the input is invalid.
+
 ## Project structure
 
 ```bash
