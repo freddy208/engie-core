@@ -45,7 +45,7 @@ After installing the package :
 ```bash
 engie --hlep
 ```
-NormLalize text :
+Normlize text :
 
 ```bash
 engie normalize " Welcome to Cameroon "
