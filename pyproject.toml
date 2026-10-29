@@ -1,3 +1,14 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "engie-core"
+version = "0.1.0"
+description = "Core utilities for the Engineering and AI project "
+readme = "README.md"
+requires-python = ">=3.10"
+
 [tool.ruff]
 line-length = 100
 target-version = "py314"
@@ -8,3 +19,8 @@ select = ["E", "F", "I", "B", "UP"]
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 
+[project.scripts]
+engie = "engie_core.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
