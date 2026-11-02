@@ -3,11 +3,36 @@ requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
 
 [project]
+
 name = "engie-core"
 version = "0.1.0"
 description = "Core utilities for the Engineering and AI project "
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+    { name = "KEPTUKWA Freddys", email = "kfreddypatient@gmail.com" }
+]
+keywords = ["python", "cli", "text", "engineering", "ai"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+    "mypy>=1.10",
+]
+
+[project.scripts]
+engie = "engie_core.cli:main"
 
 [tool.ruff]
 line-length = 100
@@ -18,9 +43,7 @@ select = ["E", "F", "I", "B", "UP"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
-
-[project.scripts]
-engie = "engie_core.cli:main"
+testpaths = ["tests"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -1,5 +1,10 @@
 # engie-core
 
+![Python](https://img.shields.io/badge/python-3.14%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![CI](https://github.com/freddy208/engie-core/actions/workflows/ci.yml/badge.svg)
+![Version](https://img.shields.io/badge/version-0.1.0-orange)
+
 I professional  python foundation for building reliable engineering and AI projects.
 
 ## Features
@@ -70,10 +75,31 @@ The CLI validates user input and returns clean error messages when the input is 
 
 ```bash
 src/engie_core   Source code
-tests/      Automated tests   
-docs/       Project documentations
+tests/           Automated tests
+docs/            Project documentations
 .github/worflows  CI configuration
 ```
+
+
+## Release
+
+Current version `0.1.0`
+
+This project follows sematic versionning
+
+- Major : Incompatible API changes 
+- Minor : backward-compatible features
+- Patch : backward-compatible bug fixes
+
+## Roadmap
+
+- [x] Text utilities
+- [x] CLI
+- [x] Automated tests
+- [x] CI pipeline
+- [ ] Publish to PyPI
+- [ ] Add code coverage
+- [ ] Add documentation site
 
 ## License
 
