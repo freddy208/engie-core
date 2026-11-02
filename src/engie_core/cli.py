@@ -1,5 +1,6 @@
 import argparse
 
+from engie_core import __version__
 from engie_core.text import count_words, normalize_text, slugify
 
 
@@ -23,6 +24,8 @@ def build_parser() -> argparse.ArgumentParser:
 
     slugify_parser = subparsers.add_parser("slug", help="Convert a title into a URL-friendly slug.")
     slugify_parser.add_argument("text", help="Text to convert.")
+    subparsers.add_parser("version", help="Show the version of Engie Core.")
+
     return parser
 
 
@@ -40,6 +43,8 @@ def main():
     elif args.command == "slug":
         result = slugify(args.text)
         print(result)
+    elif args.command == "version":
+        print(__version__)
     return 0
 
 
