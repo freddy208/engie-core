@@ -42,3 +42,9 @@ def test_cli_unknown_command_exits_with_error(monkeypatch, capsys):
 
     assert error.value.code == 2
     assert "invalid choice" in capsys.readouterr().err
+
+
+def test_version_is_defined():
+    from engie_core import __version__
+
+    assert __version__ == "0.1.0"
